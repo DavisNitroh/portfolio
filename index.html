@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,300italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+  <div id="slider-wrapper">
+    <div id="dots">
+      <ul>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div id="arrow-left" class="nav-arrow"></div>
+    <div id="image-slider">
+      <ul>
+        <li class="active-img"><img src="http://www.derekhilldesign.com/projects/slider-header/images/sunset.jpg" alt="" /></li><li><img src="http://www.derekhilldesign.com/projects/slider-header/images/lele.jpg" alt="" /></li><li><img src="http://www.derekhilldesign.com/projects/slider-header/images/logo.jpg" alt="" /></li>
+      </ul>
+      <div id="nav-bar">
+          <a href="#"><div><img src="http://www.derekhilldesign.com/projects/slider-header/images/thumb-web.jpg" /></div>About Me</a><a href="#"><div><img src="http://www.derekhilldesign.com/projects/slider-header/images/thumb-print.jpg" /></div>Web</a><a href="#"><div><img src="http://www.derekhilldesign.com/projects/slider-header/images/thumb-logo.jpg" /></div>Social Links</a><a href="#"><div><img src="http://www.derekhilldesign.com/projects/slider-header/images/thumb-photo.jpg" /></div>Contact Me</a>
+      </div>
+    </div>
+    <div id="arrow-right" class="nav-arrow"></div>
+  </div>
+
+
+ <!-- <section>
+  <a id="prev">&laquo;</a>
+    <div id="slider">
+      <ul>
+        <li><b>1</b></li>
+        <li><b>2</b></li>
+        <li><b>3</b></li>
+        <li><b>4</b></li>
+        <li><b>5</b></li>
+      </ul>
+    </div>
+  <a id="next">&raquo;</a>
+</section>  -->
+ <div id="workexperience" class="sectionClass">
+  <div class="row ">
+    <div class="sectiontitle">
+      <h2>Davis Kennedy</h2>
+      <h2>Work Experience</h2>
+     <span class="headerLine"></span>
+    </div>
+    <div class="fullWidth eight columns">
+      <ul class="cbp_tmtimeline">
+        <li>
+          <div class="cbp_tmicon cbp_tmicon-phone">
+            <i class="fa fa-star fa-5x"></i>
+          </div>
+          <div class="cbp_tmlabel wow fadeInRight animated">
+            <h3>Web developer</h3>
+            <div class="date">
+              <i class="fa fa-star"></i>May 2015 - Current
+            </div>
+            <h4><i class="fa fa-star"></i>Geekwise, Fresno</h4>
+            <p class="projectParagraph">I learn about web designing and to make websites for learning.</p>
+          </div>
+        </li>
+        <li>
+          <div class="cbp_tmicon cbp_tmicon-screen">
+            <i class="fa fa-star fa-5x"></i>
+          </div>
+          <div class="cbp_tmlabel wow fadeInRight animated">
+            <h3>Web designer</h3>
+            <h4><i class="fa fa-star"></i>Geekwise, Fresno</h4>
+            <div class="date"><i class="fa fa-star"></i>May 2015 - Current</div>
+            <p class="projectParagraph">I design websites and learn at the same time to be better.</p>
+          </div>
+        </li>
+        <li>
+    </div>
+  </div>
+      <div class="social">
+        <a href="https://www.facebook.com" target="blank"><i class="fa fa-facebook-square"></i></a>
+        <a href="https://www.twitter.com" target="blank"><i class="fa fa-twitter-square"></i></a> 
+    </div>
+</div>
+<footer>
+  <div>
+    <a href="http://jakubtursky.studenthosting.sk/?lang=en">
+      <img  class="about-me-img" src="img/f9d4fec5e414cf6dfc5b4583a263c084.jpg" alt="bewitched" width="250px" height="250px">
+    </a>
+    <div class="authorWindowWrapper">
+      <div class="authorWindow">
+        <p>Work experiences
+          <br> Created by <a href="http://jakubtursky.studenthosting.sk/?lang=en"><strong>Davis Kennedy</strong></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/wow.js"></script>
+<script>
+  new WOW().init();
+
+/* AUTHOR LINK */
+$('.about-me-img img, .authorWindowWrapper').hover(function() {
+  $('.authorWindowWrapper').stop().fadeIn('fast').find('p').addClass('trans');
+}, function() {
+  //$('.authorWindowWrapper').stop().css('display', 'none').find('p').removeClass('trans');
+});
+
+(function($, window){
+  
+  $.fn.slider = function(prev, next){
+    return this.each(function(){
+      var $container = $(this).children().eq(0);
+      
+      if (!$container) return;
+      
+      var $slides = $container.children(),
+          len = $slides.length,
+          i = $slides.outerWidth(true),
+          inSlider = Math.floor($(this).width() / i),
+          firstItem = 1,
+          isMoving = false;
+     
+      $container.css('width', (len + inSlider) * i);
+      
+      for (var j = 0; j < inSlider; j++){
+        $container.append($slides.eq(j).clone());
+      }
+      
+      $(next).click(function(e){
+        e.preventDefault();
+        
+        if(firstItem > len){
+          firstItem = 2;
+          $container.css("left","0px")
+        }
+        else firstItem++;
+        
+        console.log(firstItem);
+        
+        if (!isMoving){
+          isMoving = true;
+          $container.animate({
+            left: '-=' + i
+          },
+          'swing',
+          function(){
+              isMoving = false;
+          });
+        }
+      });
+      
+      $(prev).click(function(e){
+         e.preventDefault();
+        
+        if(firstItem === 1){
+          $container.css("left", len * i * -1);
+          firstItem = len;
+        }
+        else firstItem --;
+        
+        if (!isMoving){
+          isMoving = true;
+          $container.animate({
+            left: '+=' + i
+          },
+          'swing',
+          function(){
+            isMoving = false;
+          });
+        }
+      });
+    });
+  }
+  
+})(jQuery, window);
+
+ 
+//Usage
+$(document).ready(function(){
+  $('#slider').slider('#prev', '#next');
+});
+</script>
+</body>
+</html>
